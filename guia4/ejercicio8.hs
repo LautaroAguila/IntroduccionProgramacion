@@ -10,5 +10,9 @@ asegura: { n = 0 → resultado = 1}
 asegura: { n̸ = 0 → (n div 10resultado−1 > 0 ∧ n div 10resultado = 0) }
 }-}
 iesimoDigito :: Integer ->Integer ->Integer
-iesimoDigito x y    | n == 0 = 1
-                    | n /= 0 = div n 10**iesimoDigito
+iesimoDigito 0 _ = 1
+iesimoDigito x y    | otherwise = mod (div x (10 ^ (cantDigitos (x) - y))) 10
+
+cantDigitos :: Integer -> Integer
+cantDigitos n   | div n 10 < 1 = 1
+                | otherwise = 1 + cantDigitos(div n 10)
