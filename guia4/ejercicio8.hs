@@ -16,3 +16,14 @@ iesimoDigito x y    | otherwise = mod (div x (10 ^ (cantDigitos (x) - y))) 10
 cantDigitos :: Integer -> Integer
 cantDigitos n   | div n 10 < 1 = 1
                 | otherwise = 1 + cantDigitos(div n 10)
+
+iesimoDigito2 :: Integer -> Integer -> Integer
+iesimoDigito2 n 1 = primerDigito n 
+iesimoDigito2 n i = iesimoDigito2 (sacarPrimerDigito n) (i-1)
+
+primerDigito :: Integer -> Integer
+primerDigito n = div n (10^((cantDigitos n) -1))
+
+sacarPrimerDigito :: Integer -> Integer
+sacarPrimerDigito n = mod n (10^((cantDigitos n) -1))
+
