@@ -1,3 +1,4 @@
+module ModeloParcial where
 {-
     problema relacionesValidas (relaciones: seq⟨String x String⟩) : Bool {
       requiere: {True}
@@ -43,8 +44,9 @@ todosLosQueFiguran [] _ = []
 todosLosQueFiguran (x:xs) cs = ((fst x) : (snd x) : cs ) ++ (todosLosQueFiguran xs cs)
 
 sacaRepetidos :: [String] -> [String] -> [String]
-sacaRepetidos (x:[]) cs = (cs)
-sacaRepetidos (x:xs) cs | not (pertenece x cs) = sacaRepetidos xs (x:cs) 
+sacaRepetidos (x:xs) cs | xs == [] && (pertenece x cs) = cs
+                        | xs == [] && not (pertenece x cs) = (cs++[x])
+                        | not (pertenece x cs) = sacaRepetidos xs (cs++[x]) 
                         | pertenece x cs = sacaRepetidos xs cs 
                         | otherwise = sacaRepetidos xs cs
 
@@ -87,6 +89,6 @@ amigosDe x cs = sonAmigos x cs []
 
 sonAmigos :: String -> [(String, String)] -> [String] -> [String]
 sonAmigos _ [] ami = ami
-sonAmigos x (c:cs) ami  | x == (fst c) = sonAmigos x cs ((snd c):ami)
-                        | x == (snd c) = sonAmigos x cs ((fst c):ami)
+sonAmigos x (c:cs) ami  | x == (fst c) = sonAmigos x cs (ami++[(snd c)])
+                        | x == (snd c) = sonAmigos x cs (ami++[(fst c)])
                         | otherwise = sonAmigos x cs ami
