@@ -1,3 +1,4 @@
+print("------1------")
 def pertenece (x: int, lista: list) -> bool:
     m: bool = False
     for i in range(0,len(lista),1):
@@ -9,7 +10,7 @@ print(pertenece(1,[1,2,3,4]))
 print(pertenece(1,[2,3,4,1]))
 print(pertenece(1,[2,3,4]))
 print(pertenece(1,[2,1,3,4]))
-print("------------")
+print("------2------")
 
 def divide_a_todos (x: int, lista: list) -> bool:
     m: bool = False
@@ -26,7 +27,7 @@ print(divide_a_todos(2, [1,2,3,4]))
 print(divide_a_todos(2, [2,4]))
 print(divide_a_todos(2, [1]))
 print(divide_a_todos(2, [4,8,6]))
-print("------------")
+print("------3------")
 
 def suma_total (lista: list) -> int:
     suma: int = 0
@@ -35,7 +36,7 @@ def suma_total (lista: list) -> int:
     return suma
 
 print(suma_total([1,2,3,4]))
-print("------------")
+print("------4------")
 #in: solo lectura, nunca se modifica el valor
 #inout: lectura y escritura importa valor de entrada. semodifica segun el asegura 
         #importante! se usa en el requiere
@@ -55,7 +56,7 @@ print(ordenados([1,2,3,4]))
 print(ordenados([2,4,1]))
 print(ordenados([1]))
 print(ordenados([4,8,6]))
-print("------------")
+print("------5------")
 
 def longitud_siete(palabras: list[str]) -> bool:
     for i in range(0,len(palabras),1):
@@ -65,7 +66,7 @@ def longitud_siete(palabras: list[str]) -> bool:
 
 print(longitud_siete(["","hola",""]))
 print(longitud_siete(["","hola","papapapa"]))
-print("------------")
+print("------6------")
 
 def palindromo(palabra: str) -> bool:
     pali: str = ""
@@ -74,7 +75,7 @@ def palindromo(palabra: str) -> bool:
     return pali == palabra
 
 print(palindromo("neuquen"))
-print("------------")
+print("------7------")
 
 def contraseña (contra: str) -> str:
     tiene: int = 0
@@ -93,4 +94,33 @@ def contraseña (contra: str) -> str:
 print(contraseña("Faso12"))
 print(contraseña("Faso12345"))
 print(contraseña("Fasoooooo"))
+print("------8------")
 
+
+def historial_bancario (histo: list[tuple[str,int]]) -> str:
+    saldo: int = 0
+    for i in histo: 
+        if i[0] == "I":
+            saldo += i[1]
+        else:
+            saldo -= i[1]
+    return saldo
+
+print(historial_bancario([("I",2000), ("R", 20),("R", 1000),("I", 300)]))
+print("------9------")
+
+def tres_vocales (palabra: str) -> bool:
+    tiene: int = 0
+    vocales: str = "aeiou"
+    if len(palabra) < 3:
+        return False
+    for i in palabra:
+        for h in vocales:
+            if i == h:
+                tiene += 1
+    return tiene >= 3
+
+print(tres_vocales("holae"))
+print(tres_vocales("hola"))
+print(tres_vocales("hl"))
+print(tres_vocales(""))
