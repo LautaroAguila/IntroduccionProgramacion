@@ -1,6 +1,5 @@
 
 import math 
-import numpy as np
 
 
 def imprimir():
@@ -20,11 +19,11 @@ def perimetro2 () -> float:
 b : float = perimetro2()
 print(b)
 
-def perimetro3 () -> float:
-    return 2 * np.pi
+#def perimetro3 () -> float:
+ #   return 2 * np.pi
 
-c : float = perimetro3()
-print(c)
+#c : float = perimetro3()
+#print(c)
 
 def es_multiplo_de(n: int,m: int) -> bool:
     return (n % m) == 0
