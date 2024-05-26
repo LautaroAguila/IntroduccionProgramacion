@@ -217,7 +217,25 @@ def lista_alumnos():
     alumnos: list = []
     while nombre != "listo":
         nombre = input("Ingrese nombre: ")
-        alumnos = alumnos + [nombre]
-    return alumnos
+        if nombre != "listo":
+            alumnos = alumnos + [nombre]
+    return print(alumnos)
 
-lista_alumnos()
+#lista_alumnos()
+print("---------")
+
+def sube():
+    accion = ""
+    historial: list[(str,int)] = []
+    print("Ingese:\n C: Cargar creditos \n D: Descontar creditos \n X: Finalizar la simulacion")
+    while accion != "X":
+        accion = input("Ingrese C, D o X: ")
+        if accion == "C":
+            monto = input("Ingrse monto: ")
+            historial += [(accion,monto)]
+        elif accion == "D":
+            monto = input("Ingrse monto: ")
+            historial += [(accion, monto)]
+    return print(historial)
+
+sube()
