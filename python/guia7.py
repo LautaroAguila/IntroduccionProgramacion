@@ -124,3 +124,100 @@ print(tres_vocales("holae"))
 print(tres_vocales("hola"))
 print(tres_vocales("hl"))
 print(tres_vocales(""))
+print("------SEGUNDA PARTE------")
+
+def borra_POS_par_inout(numeros: list) -> list:
+    for i in range (0, len(numeros), 1):
+        if (i%2) == 0:
+            numeros[i] = 0
+    return numeros
+
+print(borra_POS_par_inout([1,2,3,4,5,6]))
+print("-----------")
+
+def borra_POS_par_in(numeros: list) -> list:
+    nuevos_numeros: list = []
+    for i in range (0, len(numeros), 1):
+        if (i%2) == 0:
+            nuevos_numeros += [0]
+        else:
+            nuevos_numeros.append(numeros[i])
+    return nuevos_numeros
+
+print(borra_POS_par_in([1,2,3,4,5,6]))
+print("-----------")
+
+def borrar_vocales (palabra: str) -> str:
+    vocales: str = "aeiou"
+
+    for i in palabra:
+        for h in vocales:
+            if i == h:
+                palabra = palabra.replace(i, "")
+    return palabra
+
+print(borrar_vocales("hola"))
+print("----------------")
+
+def remplaza_vocales(palabra: str) -> str:
+    vocales: str = "aeiou"
+
+    for i in palabra:
+        for h in vocales:
+            if i == h:
+                palabra = palabra.replace(i, "-")
+    return palabra
+
+print(remplaza_vocales("hola"))
+print("----------------")
+
+def da_vuelta_str(palabra: str) -> str:
+    pali: str = ""
+    for i in range(len(palabra)-1,-1,-1):
+        pali = pali + palabra[i]
+    return pali
+
+print(da_vuelta_str("hola"))
+print("------------")
+
+def eliminar_repetidos(palabra: str) -> str:
+    pali: str = palabra[0]
+
+    for i in palabra:
+        for h in pali:
+            if i == h :
+                pali = pali
+                break
+            else:
+                pali = pali + i
+    return pali
+
+print(eliminar_repetidos("ala"))
+print("-------------")
+
+def aprobado (notas: list) -> int:
+    suma = suma_total(notas)
+    promedio = suma/len(notas)
+    if pertenece(3,notas) or  pertenece(2, notas) or pertenece(1,notas) or pertenece(0,notas) or promedio < 4:
+        return 3
+    elif promedio >= 7:
+        return 1
+    elif promedio < 7 and promedio >= 4:
+        return 2
+        
+
+print(aprobado([1,2,3,4]))
+print(aprobado([5,6,7,8]))
+print(aprobado([5,6,7,8,1]))
+print(aprobado([6,7,8]))
+print("---------")
+
+def lista_alumnos():
+    nombre = "hola"
+    alumnos: list = []
+    while nombre != "listo":
+        nombre = input("Ingrese nombre: ")
+        alumnos = alumnos + [nombre]
+    return alumnos
+
+lista_alumnos()
