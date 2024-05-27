@@ -1,3 +1,5 @@
+import random
+
 print("------1------")
 def pertenece (x: int, lista: list) -> bool:
     m: bool = False
@@ -82,9 +84,9 @@ def contraseña (contra: str) -> str:
     if len(contra)<=8:
         return "ROJA"
     for i in contra:
-        if i <= "9" and i >= "0":
+        if i <= '9' and i >= '0':
             tiene +=1
-        elif i <= "90" and i >= "65":
+        elif i <= 'Z' and i >= 'A':
             tiene += 1
     if tiene < 2:
         return "AMARILLO"
@@ -125,7 +127,8 @@ print(tres_vocales("hola"))
 print(tres_vocales("hl"))
 print(tres_vocales(""))
 print("------SEGUNDA PARTE------")
-
+print("--------- EJERCICIO 2 ---------")
+print(".1.")
 def borra_POS_par_inout(numeros: list) -> list:
     for i in range (0, len(numeros), 1):
         if (i%2) == 0:
@@ -134,6 +137,7 @@ def borra_POS_par_inout(numeros: list) -> list:
 
 print(borra_POS_par_inout([1,2,3,4,5,6]))
 print("-----------")
+print(".2.")
 
 def borra_POS_par_in(numeros: list) -> list:
     nuevos_numeros: list = []
@@ -146,6 +150,7 @@ def borra_POS_par_in(numeros: list) -> list:
 
 print(borra_POS_par_in([1,2,3,4,5,6]))
 print("-----------")
+print(".3.")
 
 def borrar_vocales (palabra: str) -> str:
     vocales: str = "aeiou"
@@ -158,6 +163,7 @@ def borrar_vocales (palabra: str) -> str:
 
 print(borrar_vocales("hola"))
 print("----------------")
+print(".4.")
 
 def remplaza_vocales(palabra: str) -> str:
     vocales: str = "aeiou"
@@ -170,6 +176,7 @@ def remplaza_vocales(palabra: str) -> str:
 
 print(remplaza_vocales("hola"))
 print("----------------")
+print(".5.")
 
 def da_vuelta_str(palabra: str) -> str:
     pali: str = ""
@@ -179,6 +186,7 @@ def da_vuelta_str(palabra: str) -> str:
 
 print(da_vuelta_str("hola"))
 print("------------")
+print(".6.")
 
 def eliminar_repetidos(palabra: str) -> str:
     pali: str = palabra[0]
@@ -193,7 +201,7 @@ def eliminar_repetidos(palabra: str) -> str:
     return pali
 
 print(eliminar_repetidos("ala"))
-print("-------------")
+print("------ EJERCICIO 3 -------")
 
 def aprobado (notas: list) -> int:
     suma = suma_total(notas)
@@ -210,7 +218,8 @@ print(aprobado([1,2,3,4]))
 print(aprobado([5,6,7,8]))
 print(aprobado([5,6,7,8,1]))
 print(aprobado([6,7,8]))
-print("---------")
+print("---- EJERCICIO 4 -----")
+print(".1.")
 
 def lista_alumnos():
     nombre = "hola"
@@ -223,9 +232,10 @@ def lista_alumnos():
 
 #lista_alumnos()
 print("---------")
+print(".2.")
 
 def sube():
-    accion = ""
+    accion: str = ""
     historial: list[(str,int)] = []
     print("Ingese:\n C: Cargar creditos \n D: Descontar creditos \n X: Finalizar la simulacion")
     while accion != "X":
@@ -238,4 +248,82 @@ def sube():
             historial += [(accion, monto)]
     return print(historial)
 
-sube()
+#sube()
+print("------------")
+print(".3.")
+
+def siete_y_medio():
+    print()
+    cartas: list = [0,1,2,3,4,5,6,7,10,11,12]
+    accion: str = input("¿Que desea hacer? \n")
+    puntos: float = 0.0
+    histo: list = []
+    
+    while accion!="Plantarse" and puntos <= 7.5:
+        carta = random.choice(cartas)
+        if pertenece(carta, [10, 11, 12]):
+            puntos += 0.5
+            histo += [carta]
+            print(("Te toco un: "), carta)
+        else:
+            puntos += carta
+            histo += [carta]
+            print(("Te toco un: "), carta)
+        if puntos <= 7.5:
+            accion = input("Ingrese 'Otra' o 'Plantarse': ")
+
+    if puntos > 7.5:
+        print("PERDISTE!! \n Tus cartas fueron: ", histo, "\n Y su suma es: ", puntos)
+    elif accion == "Plantarse":
+        print("GANASTE!! \n Tus cartas fueron: ", histo, "\n Y su suma es: ", puntos) 
+
+#siete_y_medio()
+print("----- EJERCICIO 5 -------")
+print(".1.")
+
+res_1: list[bool] = [True]
+def pertenece_a_cada_uno_version_1(s: list[list[int]], e: int, res_1: list[bool]) ->  None:
+    res_1.clear()
+    for i in s:
+        if pertenece(e, i):
+            res_1 += [True]
+        else:
+            res_1 += [False]
+    return res_1
+pertenece_a_cada_uno_version_1([[1,2,3],[1,2],[1,2,3,4,5]],3,res_1)
+print("Pertenece?", res_1)
+print("------------")
+print(".2.")
+
+def pertenece_a_cada_uno_version_2(s: list[list[int]], e: int, res: list[bool]) ->  None:
+    res.clear()
+    for i in s:
+        if pertenece(e, i):
+            res += [True]
+        else:
+            res += [False]
+    return res
+
+print("Pertenece?", pertenece_a_cada_uno_version_2([[1,2,3],[1,2],[1,2,3,4,5]],3,[]))
+print("------------")
+print(".3.")
+
+def es_matriz(s: list[list[int]]) -> bool:
+    compara: bool = False
+    for i in range (0,len(s),1): 
+        compara = len(s[i]) == len(s[0])
+    return (len(s) > 0) and (len(s[0]) > 0) and compara
+
+print(es_matriz([[1,2,3],[1,4,5],[5,7,8]]))
+print(es_matriz([[1,2],[1,2,3]]))
+print("----------")
+print(".4.")
+
+res_ord: list[bool] = []
+def filas_ordenadas(s: list[list[int]], res_ord: list[bool]):
+    for i in range (0,len(s),1):
+        res_ord += [ordenados(s[i])]
+    return res_ord
+
+filas_ordenadas([[1,2,3],[4,5,6],[9,7]], res_ord)
+print(res_ord)
