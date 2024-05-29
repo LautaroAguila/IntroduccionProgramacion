@@ -1,0 +1,13 @@
+En pila de enteros solo van enteros 
+put(int)
+get() -> int : saca el ultimo elemento, si la pila esta empty y hago get el programa se cuelga
+empty() -> bool
+
+______
+|     |     <--put(2)
+|     |     <--put(3)
+|     |     <--put(-1)
+|  -1 |         empty() --> False
+|  3  |         get() --> -1 
+|  2  |         get() --> 3
+-------
