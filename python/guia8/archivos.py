@@ -67,3 +67,14 @@ def agregar_frase_al_principio(archivo4: str, frase: str) -> None:
     archW.writelines(lineas)
     
 agregar_frase_al_principio("C:\\Users\\lauta\\OneDrive\\Escritorio\\IntroProgramacion\\python\\archivos\\archivo4.txt" , "Ay Ay AYAY canta y no llores. \n")
+
+def listar_palabras_de_archivo(archivo : str) -> list:
+    arch = open(archivo, 'rb') #abrir archivo en binario
+    contenido = arch.read()
+    for b in contenido: #b es un byte
+        return
+    
+import csv
+
+def calcular_promedio_por_estudiante(nombre_archivo_notas : str, nombre_archivo_promedios : str) -> None:
+    juan = 0
