@@ -1,2 +1,4 @@
-juan
-pedro
+papel
+perro papel
+papel
+perro piso

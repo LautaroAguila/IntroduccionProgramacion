@@ -93,7 +93,7 @@ def evaluar_expresion(s: str) -> float:
             numeros.put(cuenta)
 
     return print(cuenta)
-evaluar_expresion("3 4 + 5 * 2 -")
+#evaluar_expresion("3 4 + 5 * 2 -")
 
 print("COLAS")
 
@@ -107,7 +107,7 @@ def cantidad_elementos(c : Cola) -> int:
         c.get()
         cont +=1
     return print(cont)
-cantidad_elementos(c)
+#cantidad_elementos(c)
 
 c.put(1)
 c.put(2)
@@ -120,7 +120,7 @@ def buscar_el_maximo(c: Cola[int]) -> int:
             maxi = i
     return print(maxi)
 
-buscar_el_maximo(c)
+#buscar_el_maximo(c)
 
 def pertenece(numero:int, lista:list) -> bool:
     esta: bool = False
@@ -154,7 +154,7 @@ def jugar_carton_de_bingo(carton : list[int], bolillero : Cola[int]) -> int:
         can += 1
     return print(can)
 
-jugar_carton_de_bingo(list(range(0,12,1)), armar_secuencia_de_bingo())
+#jugar_carton_de_bingo(list(range(0,12,1)), armar_secuencia_de_bingo())
 
 def n_pacientes_urgentes( c : Cola[(int, str, str)]) -> int:
     cont : int = 0
@@ -168,7 +168,41 @@ c = Cola()
 c.put((1,"'juan'", "'pedos'"))
 c.put((3,"'juan'", "'pedos'"))
 c.put((10,"'juan'", "'pedos'"))
-n_pacientes_urgentes(c)
+#n_pacientes_urgentes(c)
 
+def atencion_a_clientes(c : Cola[(str, int, bool, bool)]) -> Cola[(str, int, bool, bool)]:
+    entrada = c
+    salida = Cola()
+    ultimos: list = []
+    segundos: list = []
+    primeros: list = []
+    while entrada.empty() == False:
+        i = entrada.get()
+        if not(i[2]) and not(i[3]):
+            ultimos += [i[0]]
+        elif (i[2] and not(i[3])) or (i[3] and not(i[2])):
+            segundos += [i[0]]
+        elif i[2] and i[3]:
+            primeros += [i[0]]
+    for i in primeros:
+        salida.put(i)
+    for i in segundos:
+        salida.put(i)
+    for i in ultimos:
+        salida.put(i)
+    return salida
 
+clientes = Cola()
+clientes.put(("2",  2, True, False))
+clientes.put(("4",  4, False, False))
+clientes.put(("1",  1, True, True))
+clientes.put(("1.1",  1, True, True))
+clientes.put(("3",  3, False, True))
 
+salir = atencion_a_clientes(clientes)
+while salir.empty() == False:
+    print(salir.get())
+
+historiales = {
+    
+}

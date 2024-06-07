@@ -68,13 +68,59 @@ def agregar_frase_al_principio(archivo4: str, frase: str) -> None:
     
 agregar_frase_al_principio("C:\\Users\\lauta\\OneDrive\\Escritorio\\IntroProgramacion\\python\\archivos\\archivo4.txt" , "Ay Ay AYAY canta y no llores. \n")
 
-def listar_palabras_de_archivo(archivo : str) -> list:
+"""def listar_palabras_de_archivo(archivo : str) -> list:
     arch = open(archivo, 'rb') #abrir archivo en binario
     contenido = arch.read()
-    for b in contenido: #b es un byte
-        return
-    
-import csv
+    palabras: list[str] = []
+    palabra: str = ''
+    for b in contenido:
+        c: chr = chr(b)
+        if (c >= 'A' and c <= 'Z') or (c >= 'a' and c <= 'z') or c == ' ' or c == '-' or (c >= '1' and c <= '9'):
+            palabra += c
+        elif len(palabra) >= 5:
+            palabras.append(palabra)
+            palabra = ''
+        else: 
+            palabra = ''
+    return print(palabras)
 
-def calcular_promedio_por_estudiante(nombre_archivo_notas : str, nombre_archivo_promedios : str) -> None:
-    juan = 0
+import csv
+def calcular_promedio_por_estudiante(notas: str, prom: str) -> None:
+    f = open(notas, 'r')
+    contenido = csv.reader(f)
+
+    lista_lu: list[str] = []
+    for estudiante in contenido:
+        if not pertenece(estudiante[0], lista_lu):
+            lista_lu.append(estudiante[0])
+    lista_prom: list[int] = []
+    for i in lista_lu:
+        lista_prom.append(promedio_estudiante(notas, i))
+
+    res = open(prom, 'w')
+    writer = csv.writer(res)
+    for i in range(len(lista_lu)):
+        writer.writerow([lista_lu[i], lista_prom[i]])
+    f.close()
+    res.close()
+
+
+def pertenece(e, l: list) -> bool:
+    res: bool = False
+    for i in l:
+        if i == e:
+            res = True
+    return res
+    
+def promedio_estudiante(arch: str, lu: str) -> float:
+    f = open(arch, 'r')
+    contenido = csv.reader(f)
+    suma_notas: int = 0
+    cant_notas: int = 0
+    for x in contenido:
+        if x[0] == lu:
+            suma_notas += int(x[3])
+            cant_notas += 1
+        
+    f.close()
+    return suma_notas / cant_notas"""

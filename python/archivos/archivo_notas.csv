@@ -1,1 +1,4 @@
-nro de LU ( str ) , materia ( str ) , fecha ( str ) , nota ( float )
+12/12,materia,12/21,6.3
+12/12,materia1,12/21,3.7
+12/1e,materia,12/21,6.3
+12/1e,materia1,12/21,3.7
