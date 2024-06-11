@@ -1,5 +1,6 @@
 import random
-
+import numpy as np
+np.__version__
 print("------1------")
 def pertenece (x: int, lista: list) -> bool:
     m: bool = False
@@ -327,3 +328,27 @@ def filas_ordenadas(s: list[list[int]], res_ord: list[bool]):
 
 filas_ordenadas([[1,2,3],[4,5,6],[9,7]], res_ord)
 print(res_ord)
+
+print("----------")
+print(".5.")
+
+import numpy as np
+
+def matriz_conp2(m, n , p:int , d:int):
+    C = [[0 for _ in range(d)] for _ in range(d)]
+    for i in range(d):
+        for j in range(d):
+            for k in range(d):
+                C[i][j] += m[i][k] * n[k][j]
+    return C
+def matriz(p, d):
+    m = np.random.randint(0,9, (d, d))
+    print(m)
+    if p == 0:
+        identidad = [[1 if i == j else 0 for j in range(d)] for i in range(d)]
+        return identidad
+    resultado = m
+    for _ in range(1, p):
+        resultado = matriz_conp2(resultado, m, p, d )
+    return resultado
+print(matriz(3,3))
